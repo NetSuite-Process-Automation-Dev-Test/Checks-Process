@@ -294,7 +294,35 @@ public class HomePage extends TestBase{
 				itemAddBtn.click();
 				try {
 					WebElement nextLineItem = driver.findElement(By.xpath("//tr[@id='"+rowId+"']//following-sibling::tr[contains(@id,'item_row')]"));
+					String copiedItemName = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Item']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
+					String copiedQuantity = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Quantity']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
+					String copiedAmount = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Amount']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
+					String copiedTaxCode = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Tax Code']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
+					String copiedLocation = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Location']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
 					String lineItemText = nextLineItem.getText().trim();
+					System.out.println("The item details are Item : '"+item+"', Quantity: '"+quantity+"', Amount: '"+
+							amount+"', Tax Code: '"+taxCode+"' & Location: '"+location+"'");
+					logInfo.pass("The item details are Item : '"+item+"', Quantity: '"+quantity+"', Amount: '"+
+							amount+"', Tax Code: '"+taxCode+"' & Location: '"+location+"'");
+					System.out.println("The copied item details are Item: '"+copiedItemName+"', Quantity: '"+copiedQuantity+
+							"', Amount: '"+copiedAmount+"', Tax Code: '"+copiedTaxCode+"' & Location: '"+copiedLocation+"'");
+					logInfo.pass("The copied item details are Item: '"+copiedItemName+"', Quantity: '"+copiedQuantity+
+							"', Amount: '"+copiedAmount+"', Tax Code: '"+copiedTaxCode+"' & Location: '"+copiedLocation+"'");
 					if(lineItemText.contains(item) && lineItemText.contains(quantity) && lineItemText.contains(amount) 
 							&& lineItemText.contains(taxCode) && lineItemText.contains(location)) {
 						System.out.println("Item: '"+item+"' copied using Copy Previous feature");
@@ -356,11 +384,39 @@ public class HomePage extends TestBase{
 				je.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 				try {
 					WebElement nextLineItem = driver.findElement(By.xpath("//tr[@id='"+rowId+"']//following-sibling::tr[contains(@id,'item_row')]"));
+					String copiedItemName = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Item']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
+					String copiedQuantity = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Quantity']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
+					String copiedAmount = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Amount']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
+					String copiedTaxCode = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Tax Code']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
+					String copiedLocation = driver.findElement(By.xpath("//tr[@id='"+rowId+
+							"']//following-sibling::tr[contains(@id,'item_row')]//td[count("
+							+ "//table[@id='item_splits']//div[text()='Location']//parent::td//preceding-sibling::*)+1]"))
+							.getText().trim();
 					String lineItemText = nextLineItem.getText().trim();
+					System.out.println("The item details are Item : '"+item+"', Quantity: '"+quantity+"', Amount: '"+
+							amount+"', Tax Code: '"+taxCode+"' & Location: '"+location+"'");
+					logInfo.pass("The item details are Item : '"+item+"', Quantity: '"+quantity+"', Amount: '"+
+							amount+"', Tax Code: '"+taxCode+"' & Location: '"+location+"'");
+					System.out.println("The copied item details are Item: '"+copiedItemName+"', Quantity: '"+copiedQuantity+
+							"', Amount: '"+copiedAmount+"', Tax Code: '"+copiedTaxCode+"' & Location: '"+copiedLocation+"'");
+					logInfo.pass("The copied item details are Item: '"+copiedItemName+"', Quantity: '"+copiedQuantity+
+							"', Amount: '"+copiedAmount+"', Tax Code: '"+copiedTaxCode+"' & Location: '"+copiedLocation+"'");
 					if(lineItemText.contains(item) && lineItemText.contains(quantity) && lineItemText.contains(amount) 
 							&& lineItemText.contains(taxCode) && lineItemText.contains(location)) {
-						System.out.println("Item: '"+item+"' copied using Make Copy feature");
-						logInfo.pass("Item: '"+item+"' copied using Make Copy feature");
+						System.out.println("Item: '"+item+"' is copied successfully using Make Copy feature");
+						logInfo.pass("Item: '"+item+"' is copied successfully using Make Copy feature");
 					}else {
 						System.out.println("Item: '"+item+"' unable to copy");
 						logInfo.fail("Item: '"+item+"' unable to copy");
